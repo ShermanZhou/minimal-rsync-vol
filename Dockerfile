@@ -1,6 +1,6 @@
 FROM alpine:3.5
 
-RUN apk add --no-cache --virtual .run-deps rsync openssh tzdata curl
+RUN apk add --no-cache --virtual .run-deps rsync openssh tzdata curl git
 #COPY docker-entrypoint.sh /
 COPY rsyncd.conf /etc/
 
