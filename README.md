@@ -24,12 +24,14 @@ On none-linux platform, docker volume that is mapped to host folder is 60x slowe
 # you can't access container on mac using 172.17.0.2:873 directly, so map port to localhost
 docker run --rm -p 873:873 --name temp-rsync  sherman/rsync:1.0
 ```
-**syntax: the trailing '/' only matters for src path, it prevent the path itself being copied.**
+- ** syntax: the trailing '/' only matters for src path, it prevent the path itself being copied.**
+- ** if permission failed when sync .git files, remove rsync -a (archive) option.**
+- ** generally don't sync out any non-source-controlled build results, don't add file in container **
 
-** if permission failed when sync .git files, remove rsync -a (archive) option.
+
 - sync data IN to container
 ```
-rsync -vr approot/ localhost::data
+rsync -rv approot/ localhost::data
 ```
 
 - sync .git/ OUT to host
