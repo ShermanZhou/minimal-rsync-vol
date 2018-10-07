@@ -1,12 +1,12 @@
 ## A minimalistic rsync docker container
 
 ### Purpose
-On none-linux platform, docker volumn that is mapped to host folder is 60x slower than Mac native disk I/O; inspired by docker-compose project (which depends on ruby gem), I created this minimalistic container for developing nodejs application. It will help me to avoid installing nodejs' billion packages on my mac that when invoked have full read/write access on my machine.
+On none-linux platform, docker volume that is mapped to host folder is 60x slower than Mac native disk I/O; inspired by docker-compose project (which depends on ruby gem), I created this minimalistic container for developing nodejs application. It will help me to avoid installing nodejs' billion packages on my mac that when invoked have full read/write access on my machine.
 
 ### Principle
 - run this container that has a built-in rsync daemon running.
 - sync source code from host folder to this container using rsync
-- share this container's volumn with nodejs container
+- share this container's volume with nodejs container
 - build nodejs application inside docker container
 
 ### Issues of One Way Sync
