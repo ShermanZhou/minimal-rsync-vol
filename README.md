@@ -16,3 +16,15 @@ On none-linux platform, docker volumn that is mapped to host folder is 60x slowe
 
 ### Solutions I need to document
 - rsync can sync both way; but can't sync both way simutaneously, we can create one script for each way; from container back to host, we only need to sync the project/.git folder.
+
+### Scripts
+- run the built rsync container with a name
+``` run the built rsync container with a name.
+# (remove --rm if you want to keep it detached)
+# you can't access container on mac using 172.17.0.2:873 directly, so map port to localhost
+docker run --rm -p 873:873 --name temp-rsync  sherman/rsync:1.0
+```
+- sync data IN to container
+```
+rsync -av testdata/ localhost::data
+```
