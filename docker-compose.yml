@@ -1,0 +1,17 @@
+version: "2"
+services:
+  node9-box:
+    volumes_from:
+      - rsync-box # mount all volumes from the service, the volume is private for pod.
+    image: node:9.11.2-alpine
+    stdin_open: true
+    command: '/bin/sh'
+  rsync-box:
+    image: sherman/rsync:1.0
+    volumes:
+      - rsync-volume:/home/rsync:nocopy #define container volume
+    ports:
+      - 127.0.0.1:873:873  #hostip:hostport:containerport  Each pod need different hostport!
+volumes:
+  rsync-volume:  # declare named volume
+
