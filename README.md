@@ -26,12 +26,13 @@ docker run --rm -p 873:873 --name temp-rsync  sherman/rsync:1.0
 ```
 **syntax: the trailing '/' only matters for src path, it prevent the path itself being copied.**
 
+** if permission failed when sync .git files, remove rsync -a (archive) option.
 - sync data IN to container
 ```
-rsync -avr approot/ localhost::data
+rsync -vr approot/ localhost::data
 ```
 
 - sync .git/ OUT to host
 ```
-rsync -ar localhost::data/.git approot/
+rsync -rv localhost::data/.git approot/
 ```
