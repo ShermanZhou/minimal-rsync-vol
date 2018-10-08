@@ -24,9 +24,9 @@ On none-linux platform, docker volume that is mapped to host folder is 60x slowe
 # you can't access container on mac using 172.17.0.2:873 directly, so map port to localhost
 docker run --rm -p 873:873 --name temp-rsync  sherman/rsync:1.0
 ```
-- ** syntax: the trailing '/' only matters for src path, it prevent the path itself being copied.**
-- ** if permission failed when sync .git files, remove rsync -a (archive) option.**
-- ** generally don't sync out any non-source-controlled build results, don't add file in container **
+- **syntax: the trailing '/' only matters for src path, it prevent the path itself being copied.**
+- **if permission failed when sync .git files, remove rsync -a (archive) option.**
+- **generally don't sync out any non-source-controlled build results, don't add file in container**
 
 
 - sync data IN to container "in_sync.sh"
@@ -39,7 +39,8 @@ rsync -rv approot/ localhost::data
 rsync -rv localhost::data/.git approot/
 ```
 - watching
-I slightly modified a golang fsevent repo
+
+I slightly modified a golang fsevent repo https://github.com/ShermanZhou/fsevents
 compile the fsevents/example/main.go
 ```
 go build -o mac_fsevents
