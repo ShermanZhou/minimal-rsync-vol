@@ -29,7 +29,7 @@ docker run --rm -p 873:873 --name temp-rsync  sherman/rsync:1.0
 - ** generally don't sync out any non-source-controlled build results, don't add file in container **
 
 
-- sync data IN to container
+- sync data IN to container "in_sync.sh"
 ```
 rsync -rv approot/ localhost::data
 ```
@@ -37,4 +37,14 @@ rsync -rv approot/ localhost::data
 - sync .git/ OUT to host
 ```
 rsync -rv localhost::data/.git approot/
+```
+- watching
+I slightly modified a golang fsevent repo
+compile the fsevents/example/main.go
+```
+go build -o mac_fsevents
+```
+To automatically invoke the sync script, copy the tool to parent folder of approot/
+```
+$ ./mac_fsevents -path approot/ -script "in_sync.sh" -shell "sh"
 ```
