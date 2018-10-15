@@ -32,6 +32,18 @@ docker run --rm -p 873:873 --name temp-rsync  sherman/rsync:1.0
 - sync data IN to container "in_sync.sh"
 ```
 rsync -rv approot/ localhost::data
+# for custom port
+rsync -rv approot/ rsync://localhost:12301/data
+```
+if you have permission issues, make sure run 
+``` in container
+# chmod 777 -R /home/rysnc
+```
+- to diagnose rsync end point in container
+
+```
+$rsync -rdt rsync://HOST:port # list folders
+$rsync -rdt rsync://HOST:port/data # list folder content
 ```
 
 - sync .git/ OUT to host
