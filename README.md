@@ -17,6 +17,15 @@ On none-linux platform, docker volume that is mapped to host folder is 60x slowe
 ### Solutions I need to document
 - rsync can sync both way; but can't sync both way simutaneously, we can create one script for each way; from container back to host, we only need to sync the project/.git folder.
 
+### git option as cross-platform requirement
+for unix: 
+```
+git config --global core.autocrlf input
+```
+for windows
+```
+git config --global core.autocrlf true
+```
 ### Scripts
 - run the built rsync container with a name
 ``` run the built rsync container with a name.
