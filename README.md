@@ -1,7 +1,7 @@
 ## A minimalistic rsync docker container for MacOS
 
 ### Purpose
-On none-linux platform, docker volume that is mapped to host folder is 60x slower than Mac native disk I/O; inspired by docker-compose project (which depends on ruby gem), I created this minimalistic container for developing nodejs application. It will help me to avoid installing nodejs' billion packages on my mac that when invoked have full read/write access on my machine.
+On none-linux platform, docker volume that is mapped to host folder is 60x slower than Mac native disk I/O; inspired by docker-sync project (which depends on ruby gem, but you will need to upgrade your Mac's stock version), I created this minimalistic container for developing nodejs application. It will help me to avoid installing nodejs' billion packages on my mac that when invoked have full read/write access on my machine.
 
 ### Principle
 - run this container that has a built-in rsync daemon running.
